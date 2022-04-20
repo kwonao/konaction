@@ -16,6 +16,13 @@ MonoBehaviour:
     m_Keys:
     - Assets/Scenes/Playre Scene.unity
     - Assets/Script/Player.cs
+    - Assets/Texture/Enemy.meta
+    - Assets/Texture/Enemy/Enemy_death.png
+    - Assets/Texture/Enemy/Enemy_death.png.meta
+    - Assets/Texture/Enemy/Enemy_work.png
+    - Assets/Texture/Enemy/Enemy_work.png.meta
+    - Assets/Texture/Enemy/Enemy_work2.png
+    - Assets/Texture/Enemy/Enemy_work2.png.meta
     - Assets/Texture/player_stand/down.meta
     - Assets/Texture/player_stand/down/jump.png
     - Assets/Texture/player_stand/down/jump.png.meta
@@ -28,7 +35,7 @@ MonoBehaviour:
     - Packages/manifest.json
     - Packages/packages-lock.json
     - 
-    m_Values: 0000000000000000000000000000
+    m_Values: 000000000000000000000000000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 

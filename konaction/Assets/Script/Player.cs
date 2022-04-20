@@ -1,22 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player: MonoBehaviour
 {
-    #region //ƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è‚·‚é
-    [Header("‘¬“x")]public float speed;
-    [Header("d—Í")] public float gravity;
-    [Header("ƒWƒƒƒ“ƒv‚·‚é‚‚³")] public float jumpHeight;
-    [Header("ƒWƒƒƒ“ƒv§ŒÀŠÔ")] public float jumpLimitedTime;
-    [Header("ƒWƒƒƒ“ƒv‘¬“x")] public float jumpSpeed;
-    [Header("Ú’n”»’è")] public GroundCheck ground;
-    [Header("“ª‚ğ‚Ô‚Â‚¯‚½”»’è")] public GroundCheck head;
-    [Header("ƒ_ƒbƒVƒ…‘¬‚³•\Œ»")] public AnimationCurve dashCurve;
-    [Header("ƒWƒƒƒ“ƒv‘¬‚³d‹")] public AnimationCurve jumpCurve;
+    #region //ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§è¨­å®šã™ã‚‹
+    [Header("é€Ÿåº¦")]public float speed;
+    [Header("é‡åŠ›")] public float gravity;
+    [Header("ã‚¸ãƒ£ãƒ³ãƒ—ã™ã‚‹é«˜ã•")] public float jumpHeight;
+    [Header("ã‚¸ãƒ£ãƒ³ãƒ—åˆ¶é™æ™‚é–“")] public float jumpLimitedTime;
+    [Header("ã‚¸ãƒ£ãƒ³ãƒ—é€Ÿåº¦")] public float jumpSpeed;
+    [Header("æ¥åœ°åˆ¤å®š")] public GroundCheck ground;
+    [Header("é ­ã‚’ã¶ã¤ã‘ãŸåˆ¤å®š")] public GroundCheck head;
+    [Header("ãƒ€ãƒƒã‚·ãƒ¥é€Ÿã•è¡¨ç¾")] public AnimationCurve dashCurve;
+    [Header("ã‚¸ãƒ£ãƒ³ãƒ—é€Ÿã•é‡è¦–")] public AnimationCurve jumpCurve;
     #endregion
 
-    #region//ƒvƒ‰ƒCƒx[ƒg•Ï”
+    #region//ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆå¤‰æ•°
     private Animator anim = null;
     private Rigidbody2D rb = null;
     private bool isGround = false;
@@ -31,7 +31,7 @@ public class Player: MonoBehaviour
 
     void Start()
     {
-        //ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚Â‚©‚Ü‚¦‚é
+        //ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ã¤ã‹ã¾ãˆã‚‹
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,37 +39,37 @@ public class Player: MonoBehaviour
  
     void FixedUpdate()
     {
-        //Ú’n”»’è‚ğ“¾‚é
+        //æ¥åœ°åˆ¤å®šã‚’å¾—ã‚‹
         isGround = ground.IsGround();
         isHead = head.IsGround();
 
-        //ŠeÀ•W²‚Ì‘¬“x‚ğ‹‚ß‚é
+        //å„åº§æ¨™è»¸ã®é€Ÿåº¦ã‚’æ±‚ã‚ã‚‹
         float xSpeed = GetXSpeed();
         float ySpeed = GetYSpeed();
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“‚ğ“K—p
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é©ç”¨
         SetAnimation();
 
-        //ˆÚ“®‘¬“x‚ğİ’è
+        //ç§»å‹•é€Ÿåº¦ã‚’è¨­å®š
         rb.velocity = new Vector2(xSpeed, ySpeed);
     }
 
     /// <summary>
-    /// Y¬•ª‚Å•K—v‚ÈŒvZ‚ğ‚µA‘¬“x‚ğ•Ô‚·
+    /// Yæˆåˆ†ã§å¿…è¦ãªè¨ˆç®—ã‚’ã—ã€é€Ÿåº¦ã‚’è¿”ã™
     /// </summary>
-    /// <returns>Y²‚Ì‘¬‚³</returns>
+    /// <returns>Yè»¸ã®é€Ÿã•</returns>
     private float GetYSpeed()
     {
-        //ƒL[“ü—Í‚³‚ê‚½‚çs“®‚·‚é
+        //ã‚­ãƒ¼å…¥åŠ›ã•ã‚ŒãŸã‚‰è¡Œå‹•ã™ã‚‹
         float verticalkey = Input.GetAxis("Vertical");
         float ySpeed = -gravity;
 
         if (isGround)
         {
-            if (verticalkey > 0.7)//0.7ˆÈã  
+            if (verticalkey > 0.7)//0.7ä»¥ä¸Š  
             {
                 ySpeed = jumpSpeed;
-                jumpPos = transform.position.y; //ƒWƒƒƒ“ƒv‚µ‚½‚‚³‚ğ‹L˜^
+                jumpPos = transform.position.y; //ã‚¸ãƒ£ãƒ³ãƒ—ã—ãŸé«˜ã•ã‚’è¨˜éŒ²
                 isJump = true;
                 jumpTime = 0.0f;
             }
@@ -80,14 +80,14 @@ public class Player: MonoBehaviour
         }
         else if (isJump)
         {
-            //ã•ûŒüƒL[‚ğ‰Ÿ‚µ‚Ä‚¢‚é‚©
+            //ä¸Šæ–¹å‘ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ã„ã‚‹ã‹
             bool pushUpKey = verticalkey > 0.7;
-            //Œ»İ‚Ì‚‚³‚ª”ò‚×‚é‚‚³‚æ‚è‰º‚©
+            //ç¾åœ¨ã®é«˜ã•ãŒé£›ã¹ã‚‹é«˜ã•ã‚ˆã‚Šä¸‹ã‹
             bool canHeight = jumpPos + jumpHeight > transform.position.y;
-            //ƒWƒƒƒ“ƒvŠÔ‚ª’·‚­‚È‚è‚·‚¬‚Ä‚¢‚È‚¢‚©
+            //ã‚¸ãƒ£ãƒ³ãƒ—æ™‚é–“ãŒé•·ããªã‚Šã™ãã¦ã„ãªã„ã‹
             bool canTime = jumpLimitedTime > jumpTime;
 
-            if (pushUpKey && canHeight && canTime && !isHead)//0.7ˆÈã
+            if (pushUpKey && canHeight && canTime && !isHead)//0.7ä»¥ä¸Š
             {
                 ySpeed = jumpSpeed;
                 jumpTime += Time.deltaTime;
@@ -98,7 +98,7 @@ public class Player: MonoBehaviour
                 jumpTime = 0.0f;
             }
         }
-        //ƒAƒjƒ[ƒVƒ‡ƒ“ƒJ[ƒu‚ğ‘¬“x‚É“K—p
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚«ãƒ¼ãƒ–ã‚’é€Ÿåº¦ã«é©ç”¨
         if (isJump)
         {
             ySpeed *= jumpCurve.Evaluate(jumpTime);
@@ -108,17 +108,17 @@ public class Player: MonoBehaviour
     }
 
     /// <summary>
-    /// X¬•ª‚Å•K—v‚ÈŒvZ‚ğ‚µA‘¬“x‚ğ•Ô‚·
+    /// Xæˆåˆ†ã§å¿…è¦ãªè¨ˆç®—ã‚’ã—ã€é€Ÿåº¦ã‚’è¿”ã™
     /// </summary>
-    /// <returns>X²‚Ì‘¬‚³</returns>
+    /// <returns>Xè»¸ã®é€Ÿã•</returns>
     private float GetXSpeed()
     {
-        //ƒL[“ü—Í‚³‚ê‚½‚çs“®‚·‚é
+        //ã‚­ãƒ¼å…¥åŠ›ã•ã‚ŒãŸã‚‰è¡Œå‹•ã™ã‚‹
         float horizontalKey = Input.GetAxis("Horizontal");
 
         float xSpeed = 0.0f;
 
-        if (horizontalKey > 0.9)//‰½‚©‚Ì—Í‚ª‚©‚©‚Á‚Ä‚¢‚é
+        if (horizontalKey > 0.9)//ä½•ã‹ã®åŠ›ãŒã‹ã‹ã£ã¦ã„ã‚‹
         {
             transform.localScale = new Vector3(1, 1, 1);
             isRun = true;
@@ -139,7 +139,7 @@ public class Player: MonoBehaviour
             xSpeed = 0.0f;
         }
 
-        //‘O‰ñ‚Ì“ü—Í‚©‚çƒ_ƒbƒVƒ…‚Ì”½“]‚ğ”»’f‚µ‚Ä‘¬“x‚ğ•Ï‚¦‚é
+        //å‰å›ã®å…¥åŠ›ã‹ã‚‰ãƒ€ãƒƒã‚·ãƒ¥ã®åè»¢ã‚’åˆ¤æ–­ã—ã¦é€Ÿåº¦ã‚’å¤‰ãˆã‚‹
         if (horizontalKey > 0 && beforKey < 0)
         {
             dashTime = 0.0f;
@@ -150,13 +150,13 @@ public class Player: MonoBehaviour
         }
         beforKey = horizontalKey;
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“ƒJ[ƒu‚ğ‘¬“x‚É“K—p
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚«ãƒ¼ãƒ–ã‚’é€Ÿåº¦ã«é©ç”¨
         xSpeed *= dashCurve.Evaluate(dashTime);
 
         return xSpeed;
     }
     /// <summary>
-    /// ƒAƒjƒ[ƒVƒ‡ƒ“‚ğİ’è‚·‚é
+    /// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹
     /// </summary>
     private void SetAnimation()
     {
